@@ -1,0 +1,12 @@
+<div>fqrgqq
+    <% items.forEach(item =>{ %>
+        <div class='col-4'>
+            <%=  item.name %> 
+            <form action="/cart/<%= item._id %>/add" method="POST">
+                <input type="hidden" value="<%= item._id %>">
+            <button type="submit">Add to cart</button>    
+            </form>
+            
+        </div>
+    <%})%>
+</div>

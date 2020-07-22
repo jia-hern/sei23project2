@@ -1,0 +1,25 @@
+<div>
+    <% items.forEach( item => { %>
+    <%= item %>
+    <% }) %>
+</div>
+
+<table>
+    <tr>
+        <td>
+            Item Name</td>
+        <td>
+            Quantity</td>
+        <td>
+            Price</td>
+    </tr>
+    <% items.forEach(item => { %>
+    <tr>
+        <td>
+            <%= item.item.name %></td>
+        <td>
+            <%= item.quantity %></td>
+        <td>
+            <%= item.item.price %></td>
+    </tr> <% }) %>
+</table>
