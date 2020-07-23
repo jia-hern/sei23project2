@@ -1,3 +1,6 @@
+<% if (orders.length == 0){%>
+There is no items in the order?!
+<%} else {%>
 <div>
     <% orders.forEach ((order, count) => {%>
     <table>
@@ -17,3 +20,4 @@
     </table>
     <% }) %>
 </div>
+<% } %>
