@@ -12,8 +12,8 @@ const MongoStore = require('connect-mongo')(session);
 mongoose.Promise = Promise;
 mongoose
 	.connect(
-		process.env.MONGODB,
-		// process.env.MONGOLIVE,
+		// process.env.MONGODB,
+		process.env.MONGOLIVE,
 		{
 			useNewUrlParser    : true,
 			useUnifiedTopology : true,
@@ -39,9 +39,9 @@ app.use(
 		secret            : process.env.SECRET,
 		saveUninitialized : true,
 		resave            : false,
-		cookie            : { maxAge: 36000000 },
-		// store             : new MongoStore({ url: process.env.MONGOLIVE })
-		store             : new MongoStore({ url: process.env.MONGODB })
+		cookie            : { maxAge: 360000 },
+		store             : new MongoStore({ url: process.env.MONGOLIVE })
+		// store             : new MongoStore({ url: process.env.MONGODB })
 	})
 );
 //-- passport initialization
@@ -59,6 +59,9 @@ app.use('/items', require('./routes/items.route'));
 app.use('/cart', require('./routes/cart.route'));
 app.use('/orders', require('./routes/orders.route'));
 app.use('/', require('./routes/auth.route'));
+app.get('/', (req, res) => {
+	res.redirect('/items');
+});
 app.listen(process.env.PORT, () => {
 	console.log(`running on PORT ${process.env.PORT}`);
 });

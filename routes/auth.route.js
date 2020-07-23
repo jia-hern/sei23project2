@@ -43,7 +43,7 @@ router.post('/auth/signin', function(req, res, next) {
 				return next(err);
 			}
 			res.cookie('role', user.isSeller, { maxAge: 36000 });
-			return res.redirect('/home');
+			return res.redirect('/');
 		});
 	})(req, res, next);
 });
