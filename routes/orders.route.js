@@ -13,8 +13,6 @@ router.get('/', async (req, res) => {
 		let orders = await Order.find({
 			createdBy : req.user._id
 		}).populate('items.item');
-		console.log(orders[0].items);
-
 		res.render('orders/index', { orders });
 	} catch (err) {
 		console.log(err);
