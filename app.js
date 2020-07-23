@@ -39,7 +39,7 @@ app.use(
 		secret            : process.env.SECRET,
 		saveUninitialized : true,
 		resave            : false,
-		cookie            : { maxAge: 360000 },
+		cookie            : { maxAge: 36000000 },
 		// store             : new MongoStore({ url: process.env.MONGOLIVE })
 		store             : new MongoStore({ url: process.env.MONGODB })
 	})
@@ -57,7 +57,7 @@ app.use(function(request, response, next) {
 
 app.use('/items', require('./routes/items.route'));
 app.use('/cart', require('./routes/cart.route'));
-// app.use('/order', require('./routes/orders.route'));
+app.use('/orders', require('./routes/orders.route'));
 app.use('/', require('./routes/auth.route'));
 app.listen(process.env.PORT, () => {
 	console.log(`running on PORT ${process.env.PORT}`);

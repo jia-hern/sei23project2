@@ -1,8 +1,6 @@
-<div>
-    <% items.forEach( item => { %>
-    <%= item %>
-    <% }) %>
-</div>
+<% if (items.length == 0){%>
+There is no items in the shopping cart
+<%} else {%>
 
 <table>
     <tr>
@@ -23,3 +21,11 @@
             <%= item.item.price %></td>
     </tr> <% }) %>
 </table>
+<form action="/cart/checkout" method="post">
+    <button type="submit">Checkout</button>
+</form>
+
+
+
+
+<% } %>
