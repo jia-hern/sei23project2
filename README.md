@@ -4,7 +4,7 @@
 
 App is hosted here: https://sei23sgproject2.herokuapp.com/items
 
-## Project 1 Objectives
+## Project 2 Objectives
 Create an ecommerce app which allows users to view items on main page, add to a cart and checkout the cart. Upon checkout the items from the cart should be moved to the orders summary page
 
 
