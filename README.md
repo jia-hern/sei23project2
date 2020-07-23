@@ -1,6 +1,6 @@
-# sei23project2: Ecommerce
+# sei23 Project 2
 
-## SEI-23 Project 2
+## Ecommerce
 
 App is hosted here: https://sei23sgproject2.herokuapp.com/items
 
