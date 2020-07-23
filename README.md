@@ -1,4 +1,4 @@
-# sei23 Project 2
+# SEI23 Project 2
 
 ## Ecommerce
 
