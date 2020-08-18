@@ -16,3 +16,9 @@ A user, item, cart and order model are created for this to work.
 The user model has a reference to the cart, and both cart and order is referrenced to the item and user and item.
 EJS files are used to display the pages along with some bootstrap styling
 
+## Further:
+1) upon adding on existing item to cart -> it should update the qty instead of adding the same item on a separate line
+2) add icon, some colours to make page look nicer
+3) give distinct roles between seller and buyer, seller can only add items to the list(and not go to the checkout page).
+buyer cannot add items to the list (but can go to the checkout page)
+
