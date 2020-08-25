@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Cart = require('../models/cart.model');
 const Order = require('../models/order.model');
+const { exists } = require('../models/cart.model');
 
 /* get all items from cart from current user */
 router.get('/', async (req, res) => {
@@ -50,11 +51,37 @@ router.post('/:id/add', async (req, res) => {
 			/* 
         Push the new item into the existing cart
         */
-			cart.items.push({
-				item     : req.params.id,
-				quantity : 1
-			});
-			/* 
+			if (cart.items) {
+				//need to check if item has existed -> if  yes then* change number
+				// instead of addibg new item
+				// let existingCartwithItem = Cart.find({ 'items.item': req.params.cart_id, createdBy: req.user._id });
+				// console.log('This is exisiting cart with item:', existingCartwithItem)
+
+				//find index of item in cart
+				// if found return index else return - 1
+				let itemIndex = cart.items.findIndex((element) => {
+					return element.item.equals(req.params.id);
+				});
+
+				console.log('Item index is : ', itemIndex);
+				//this will show on node terminal
+				///JSON file???
+
+				// Understand???? oh for things in route we cannont console log in chrome? ohhh. is there a way to open the object in another place that is easier to view the json file?
+				//i tried to console.log what u gave ytd and it was a massive object
+				//if index is found and not -1 update quantity
+				if (itemIndex > -1) {
+					cart.items[itemIndex].quantity += 1;
+				} else {
+					//else just add new item to cart
+					cart.items.push({
+						item     : req.params.id,
+						quantity : 1
+					});
+				}
+			}
+
+			/*
         Save changes to existing cart
         */
 			let savedCart = await cart.save();

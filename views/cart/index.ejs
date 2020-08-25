@@ -2,7 +2,6 @@
     <% if (items.length == 0){%>
     There is no items in the shopping cart
     <%} else {%>
-
     <table class="table">
         <tr>
             <td>
@@ -21,16 +20,9 @@
             <td>
                 <%= item.item.price %></td>
         </tr> <% }) %>
-
     </table>
-
     <form action="/cart/checkout" method="post">
         <button type="submit">Checkout</button>
     </form>
 </div>
-
-
-
-
-
 <% } %>
