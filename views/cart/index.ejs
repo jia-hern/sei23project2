@@ -5,7 +5,11 @@
     <table class="table">
         <tr>
             <td>
-                Item Name</td>
+                Items
+                <%if (items.length > 0) {%>
+                (<%=items.length%>)
+                <%}%>
+            </td>
             <td>
                 Quantity</td>
             <td>
