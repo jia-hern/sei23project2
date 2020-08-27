@@ -10,10 +10,9 @@
                 (<%=items.length%>)
                 <%}%>
             </td>
-            <td>
-                Quantity</td>
-            <td>
-                Price</td>
+            <td>Quantity</td>
+            <td>Price</td>
+            <td>Subtotal</td>
         </tr>
         <% items.forEach(item => { %>
         <tr>
@@ -23,6 +22,8 @@
                 <%= item.quantity %></td>
             <td>
                 <%= item.item.price %></td>
+            <td>
+                <%= item.item.price * item.quantity %></td>
         </tr> <% }) %>
     </table>
     <form action="/cart/checkout" method="post">
