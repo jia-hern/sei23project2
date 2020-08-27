@@ -14,10 +14,12 @@ router.get('/', async (req, res) => {
 			let items = await Cart.findOne({ createdBy: req.user._id }).populate('items.item');
 			// console.log(items);
 			let total = 0;
-
-			items.items.forEach((el) => {
-				total += el.item.price * el.quantity;
-			});
+			// if there are items in the cart then compute total
+			if (items) {
+				items.items.forEach((el) => {
+					total += el.item.price * el.quantity;
+				});
+			}
 			// console.log(total);
 			if (items) {
 				/* if there are items in the cart display that */
@@ -96,6 +98,7 @@ router.post('/:id/add', async (req, res) => {
 			let savedCart = await cart.save();
 			if (savedCart) {
 				res.redirect('/');
+				console.log('The cart contains: ', savedCart);
 			}
 		} else {
 			/* 
