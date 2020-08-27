@@ -12,12 +12,19 @@ router.get('/', async (req, res) => {
 		} else {
 			//compares to check that all the items that is created by this user
 			let items = await Cart.findOne({ createdBy: req.user._id }).populate('items.item');
+			// console.log(items);
+			let total = 0;
+
+			items.items.forEach((el) => {
+				total += el.item.price * el.quantity;
+			});
+			// console.log(total);
 			if (items) {
 				/* if there are items in the cart display that */
-				res.render('cart/index', { items: items['items'] });
+				res.render('cart/index', { items: items['items'], total });
 			} else {
 				/* return an empty array if there is nothing */
-				res.render('cart/index', { items: [] });
+				res.render('cart/index', { items: [], total });
 			}
 		}
 	} catch (error) {
@@ -65,10 +72,8 @@ router.post('/:id/add', async (req, res) => {
 
 				console.log('Item index is : ', itemIndex);
 				//this will show on node terminal
-				///JSON file???
 
-				// Understand???? oh for things in route we cannont console log in chrome? ohhh. is there a way to open the object in another place that is easier to view the json file?
-				//i tried to console.log what u gave ytd and it was a massive object
+				// oh for things in route we cannont console log in chrome
 				//if index is found and not -1 update quantity
 				if (itemIndex > -1) {
 					cart.items[itemIndex].quantity += 1;
@@ -79,6 +84,10 @@ router.post('/:id/add', async (req, res) => {
 						quantity : 1
 					});
 				}
+				// let totalPrice = 0;
+				// for (i = 0; i < items.length; i++) {
+				// 	totalPrice += cart.items[i].price * cart.items[i].quantity;
+				// }
 			}
 
 			/*

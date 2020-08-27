@@ -25,7 +25,25 @@
             <td>
                 <%= item.item.price * item.quantity %></td>
         </tr> <% }) %>
+        <tr>
+            <td colspan="4">
+                Total Price</td>
+            <!-- <td>
+            </td>
+            <td>
+            </td> -->
+            <td>
+                <%= total %></td>
+        </tr>
     </table>
+    <!-- <div>
+        <tr>
+            <span>Total Price</span>
+            <span>
+                <%= total %>
+            </span>
+        </tr>
+    </div> -->
     <form action="/cart/checkout" method="post">
         <button type="submit">Checkout</button>
     </form>
