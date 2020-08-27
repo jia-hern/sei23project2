@@ -20,5 +20,5 @@ EJS files are used to display the pages along with some bootstrap styling
 1) upon adding on existing item to cart -> it should update the qty instead of adding the same item on a separate line
 2) compute total price in cart
 3) add icon, some colours to make page look nicer
-4)give distinct roles between seller and buyer, seller can only add items to the list(and not go to the checkout page).
+4) give distinct roles between seller and buyer, seller can only add items to the list(and not go to the checkout page).
 buyer cannot add items to the list (but can go to the checkout page)
